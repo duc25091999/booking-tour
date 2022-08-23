@@ -54,8 +54,21 @@ module.exports = {
       res.status(400).send({ success: false, message: "Có lỗi xảy ra" });
     }
   },
+  getById: async (req,res) => {
+    try {
+      const order = await Order.findById(req.params.id) 
+      res.status(200).send({success:true,order})
+    }
+    catch(err){
+      res.status(400).send({ success: false, message: "Có lỗi xảy ra" });
+    }
+  },
   update: async(req,res)=>{
-    const {id} = req.params;
-    
+    try {
+      await Order.findByIdAndUpdate(req.params.id,req.body);
+      res.status(200).send({ success: true, message: "Cập nhật thành công" });
+    }catch(err){
+      res.status(400).send({ success: false, message: "Có lỗi xảy ra" });
+    }  
   }
 };
