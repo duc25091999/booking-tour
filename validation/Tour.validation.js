@@ -13,6 +13,7 @@ const TourValidation = (data) => {
         PricePerAdult: Joi.number().required,
         PricePerChild: Joi.number().required,
         City: Joi.string().min(6).max(50).required,
+        isDeleted: Joi.boolean().required,
         Addon: Joi.array().items(Joi.object({
             Title: Joi.string().min(6).max(255).required,
             Detail: Joi.string().min(6).max(50).required,

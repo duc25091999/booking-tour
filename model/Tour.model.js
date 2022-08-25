@@ -32,7 +32,11 @@ const TourSchema = mongoose.Schema({
         type: Number,
     },
     City: {
-        number: String,
+        type: String,
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     },
     Addon: [{
         type: AddonSchema,
